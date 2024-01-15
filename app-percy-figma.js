@@ -31,7 +31,7 @@ const configFileIndex = process.argv.indexOf("--config");
 const configFileName =
     configFileIndex !== -1
         ? process.argv[configFileIndex + 1]
-        : "appPercyFigmaApp.yml";
+        : "appPercyFigma.yml";
 
 const configPath = path.resolve(__dirname, "..", "..", configFileName);
 
@@ -44,7 +44,8 @@ const AppPercyFigma = async () => {
         const configContent = fs.readFileSync(configPath, "utf8");
         const config = yml.load(configContent);
 
-        await createFolder("resources");
+        const resourcesPath = path.join(__dirname, "resources");
+        await createFolder(resourcesPath);
 
         const baseUrl = "https://api.figma.com/v1/images/";
 
@@ -76,7 +77,7 @@ const AppPercyFigma = async () => {
 
         for (const detail of config.snapshotDetails) {
             try {
-                const folderPath = `resources/${detail.deviceName}`;
+                const folderPath = `${resourcesPath}/${detail.deviceName}`;
                 await createFolder(folderPath);
                 let device = { ...detail };
                 delete device.names;
@@ -130,7 +131,7 @@ const AppPercyFigma = async () => {
         await Promise.all(downloadPromises);
 
         /** Uploading all the downloaded images to Percy with the name being the image file names**/
-        const command = `npx percy app:exec -- node byos.js`;
+        const command = `npx percy app:exec -- node ${__dirname}/byos.js`;
 
         // Using execAsync to promisify the exec function
         const { stdout, stderr } = await execAsync(command);
@@ -140,7 +141,7 @@ const AppPercyFigma = async () => {
         console.error("Command Error Output (stderr):", stderr);
 
         // Deleting the folder after execution
-        fs.rmSync("resources", { recursive: true });
+        fs.rmSync(resourcesPath, { recursive: true });
         console.log(`Deleted folder: resources`);
     } catch (error) {
         handleError(error);
