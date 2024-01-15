@@ -1,6 +1,6 @@
 # Percy Figma
 
-Helps you upload Figma images to Percy and get visual comparisons.
+Helps you upload Figma images to App Percy and get visual comparisons.
 
 ## Installation
 
