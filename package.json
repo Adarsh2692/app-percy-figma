@@ -1,6 +1,6 @@
 {
   "name": "app-percy-figma",
-  "version": "1.0.2",
+  "version": "1.0.21",
   "description": "Package to integrate figma with App percy",
   "main": "app-percy-figma.js",
   "bin": {
