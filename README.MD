@@ -1,4 +1,4 @@
-# Percy Figma
+# App Percy Figma
 
 Helps you upload Figma images to App Percy and get visual comparisons.
 
@@ -46,7 +46,7 @@ snapshotDetails:
     ids: ["123-456", "345-678"]
 ```
 
-   - Percy Project Token can be found under the project settings section in Percy.
+   - App Percy Project Token can be found under the project settings section in Percy.
    - The Figma Account Access Token can be generated from the "Personal access tokens" section of account settings.
    - Access tokens can also be generated from [here](https://www.figma.com/developers/api#access-tokens).
    - The Figma File Token (i.e., the figma_file_token parameter) can be found in your Figma file URLs,
@@ -64,7 +64,7 @@ snapshotDetails:
 
 2. Alternatively the tokens can be provided as environment variables as well.
 
-   - Percy project token:
+   - App Percy project token:
 
      ```shell
      # macOS
@@ -94,7 +94,7 @@ snapshotDetails:
      set FIGMA_FILE_TOKEN="your-figma-file-token"
      ```
 
-3. Uploading the designs onto Percy
+3. Uploading the designs onto App Percy
 
    Run the command:
 
@@ -102,7 +102,7 @@ snapshotDetails:
    npx app-percy-figma
    ```
 
-   By default, the package looks for the percyFigma.yml config file. If you are using a different config file, specify it using the --config flag:
+   By default, the package looks for the appPercyFigma.yml config file. If you are using a different config file, specify it using the --config flag:
 
    ```shell
    npx app-percy-figma --config your-config-file.yml
